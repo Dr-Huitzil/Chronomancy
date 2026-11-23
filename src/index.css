@@ -1,0 +1,234 @@
+/* src/index.css - Macabre Chronomancy Design System (OLED True Black & Occult Horology) */
+
+:root,
+[data-theme="dark"] {
+  /* --- Canvas & Atmospherics (The Void of Time - True OLED Black) --- */
+  --bg-canvas: #000000;
+  --bg-surface: #060907;
+  --bg-surface-elevated: #0b110e;
+  --bg-glass: rgba(8, 14, 10, 0.88);
+  --bg-glass-card: rgba(12, 18, 14, 0.92);
+  --bg-overlay: rgba(0, 0, 0, 0.88);
+  
+  /* --- Macabre Chronomantic Accents (Ethereal Emissive Palette) --- */
+  --color-leaf-primary: #2ee6a8;       /* Spectral Soul Luminescence */
+  --color-leaf-light: rgba(46, 230, 168, 0.12);
+  --color-leaf-border: rgba(46, 230, 168, 0.32);
+  
+  --color-sun-amber: #f59e0b;          /* Arcane Cinder Flame */
+  --color-sun-warm: #fb923c;
+  --color-sun-light: rgba(245, 158, 11, 0.12);
+  
+  --color-transit-terracotta: #ca8a04; /* Astrolabe Antique Bronze */
+  --color-transit-bg: rgba(202, 138, 4, 0.1);
+  --color-transit-border: rgba(202, 138, 4, 0.35);
+
+  --color-leak-rust: #dc2626;          /* Void Entropy / Temporal Hemorrhage */
+  --color-leak-bg: rgba(220, 38, 38, 0.12);
+  --color-leak-border: rgba(220, 38, 38, 0.4);
+
+  /* --- Text & Neutral Typography --- */
+  --text-main: #f3f5f4;
+  --text-muted: #889990;
+  --text-dim: #4d5e55;
+  --border-light: rgba(46, 230, 168, 0.16);
+  --border-strong: rgba(46, 230, 168, 0.28);
+  
+  /* --- Occult Glows & Shadows --- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.9);
+  --shadow-glow-leaf: 0 0 28px rgba(46, 230, 168, 0.24);
+  --shadow-glow-sun: 0 0 28px rgba(245, 158, 11, 0.24);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+[data-theme="light"] {
+  /* --- Canvas & Atmospherics (Alchemical Parchment Mode) --- */
+  --bg-canvas: #f6f7f2;
+  --bg-surface: rgba(255, 255, 255, 0.92);
+  --bg-surface-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass-card: rgba(255, 255, 255, 0.9);
+  --bg-overlay: rgba(246, 247, 242, 0.85);
+  
+  /* --- Light Palette --- */
+  --color-leaf-primary: #15803d;
+  --color-leaf-light: #eaf5ee;
+  --color-leaf-border: rgba(21, 128, 61, 0.25);
+  
+  --color-sun-amber: #d97706;
+  --color-sun-warm: #ea580c;
+  --color-sun-light: #fef3c7;
+  
+  --color-transit-terracotta: #b45309;
+  --color-transit-bg: rgba(180, 83, 9, 0.08);
+  --color-transit-border: rgba(180, 83, 9, 0.25);
+
+  --color-leak-rust: #b91c1c;
+  --color-leak-bg: rgba(185, 28, 28, 0.08);
+  --color-leak-border: rgba(185, 28, 28, 0.25);
+
+  /* --- Text & Neutral Typography --- */
+  --text-main: #142019;
+  --text-muted: #5e7065;
+  --text-dim: #8b9d93;
+  --border-light: rgba(21, 128, 61, 0.14);
+  --border-strong: rgba(21, 128, 61, 0.28);
+  
+  --shadow-sm: 0 2px 8px rgba(20, 32, 25, 0.04);
+  --shadow-md: 0 8px 24px rgba(20, 32, 25, 0.07);
+  --shadow-glow-leaf: 0 0 20px rgba(21, 128, 61, 0.18);
+  --shadow-glow-sun: 0 0 20px rgba(217, 119, 6, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-canvas);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Occult Horology Astrolabe subtle background pattern */
+[data-theme="dark"] body {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(46, 230, 168, 0.04) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(220, 38, 38, 0.02) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: opacity 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+input, select {
+  font-family: inherit;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--color-leaf-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* Chronomantic Battery & Sun HUD */
+.solar-battery-bar {
+  height: 8px;
+  background: rgba(46, 230, 168, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.solar-battery-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-leaf-primary) 0%, var(--color-sun-amber) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* Friction Nodes (Commutes) */
+.friction-node {
+  background: var(--color-transit-bg);
+  border: 1px dashed var(--color-transit-border);
+  border-radius: var(--radius-md);
+  color: var(--color-transit-terracotta);
+}
+
+/* Leak / Overdraft Highlight */
+.leak-node {
+  background: var(--color-leak-bg);
+  border: 1px dashed var(--color-leak-border);
+  border-radius: var(--radius-md);
+  color: var(--color-leak-rust);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(46, 230, 168, 0.22);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(46, 230, 168, 0.45);
+}
+
+/* Coding-Block Collapsible Temporal Gaps */
+.timeline-gap-collapsed {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: rgba(245, 158, 11, 0.04);
+  border: 1px dashed rgba(245, 158, 11, 0.28);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.timeline-gap-collapsed:hover {
+  background: rgba(245, 158, 11, 0.09);
+  border-color: rgba(245, 158, 11, 0.55);
+}
+
+.timeline-gap-expanded {
+  background: var(--bg-surface);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-left: 4px solid var(--color-sun-amber);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.08);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.timeline-gap-expanded:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.14);
+}
