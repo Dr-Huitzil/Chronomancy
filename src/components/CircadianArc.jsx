@@ -73,20 +73,45 @@ export function CircadianArc({ timeFormat = '12h' }) {
       {/* Celestial Icon & Horizon Curve */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         {solarData.isDay ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Sun size={15} color="var(--color-sun-amber)" strokeWidth={2.5} />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--color-sun-warm)', fontFamily: 'var(--font-mono)' }}>
-                Solar Arc: {solarData.progressPercent}%
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Sun size={15} color="var(--color-sun-amber)" strokeWidth={2.5} />
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--color-sun-warm)', fontFamily: 'var(--font-mono)' }}>
+                  Solar Arc: {solarData.progressPercent}%
+                </span>
+                <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>
+                  Dusk at {solarData.sunsetTime} ({solarData.daylightHours}h light)
+                </span>
+              </div>
+            </div>
+
+            {/* Current Lunar Cycle Badge */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+              paddingLeft: '10px',
+              borderLeft: '1px solid var(--border-light)'
+            }}>
+              <span style={{ fontSize: '14px', lineHeight: 1 }} title={`${lunarData.phaseName} (${lunarData.illumination}% illum)`}>
+                {lunarData.moonEmoji}
               </span>
-              <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>
-                Dusk at {solarData.sunsetTime} ({solarData.daylightHours}h light)
-              </span>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--text-main)', fontFamily: 'var(--font-mono)' }}>
+                  {lunarData.phaseName}
+                </span>
+                <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>
+                  {lunarData.illumination}% • Day {lunarData.lunarAgeDays}/29.5
+                </span>
+              </div>
             </div>
           </div>
         ) : (
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            {renderMoonSvg()}
+            <span style={{ fontSize: '18px', lineHeight: 1 }} title={`${lunarData.phaseName} (${lunarData.illumination}% illum)`}>
+              {lunarData.moonEmoji}
+            </span>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--color-leaf-primary)', fontFamily: 'var(--font-mono)' }}>
                 {lunarData.phaseName} ({lunarData.illumination}%)

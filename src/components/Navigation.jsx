@@ -286,7 +286,7 @@ export function Navigation({
               fontWeight: '800',
               color: solarData.isDay ? 'var(--color-sun-warm)' : 'var(--color-leaf-primary)'
             }}>
-              {solarData.isDay ? <Sun size={13} strokeWidth={2.5} /> : <Moon size={13} strokeWidth={2.5} />}
+              {solarData.isDay ? <Sun size={13} strokeWidth={2.5} /> : <span style={{ fontSize: '13px', lineHeight: 1 }}>{lunarData.moonEmoji}</span>}
               <span>{solarData.isDay ? 'Daylight Hours' : 'Night Hours'}</span>
             </span>
 
@@ -295,9 +295,12 @@ export function Navigation({
             </span>
           </div>
 
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ fontSize: '10px', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>{solarData.isDay ? `Dusk at ${solarData.sunsetTime}` : `Dawn at ${solarData.sunriseTime}`}</span>
-            <span>{!solarData.isDay && lunarData.phaseName}</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--text-main)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ fontSize: '12px', lineHeight: 1 }}>{lunarData.moonEmoji}</span>
+              <span>{lunarData.phaseName}</span>
+            </span>
           </div>
 
           <div style={{ fontSize: '9px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', borderTop: '1px dashed var(--border-light)', paddingTop: '4px', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>

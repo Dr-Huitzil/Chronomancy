@@ -95,28 +95,36 @@ export function calculateMoonPhase(date = new Date()) {
 
   let phaseName = 'New Moon';
   let phaseSvgType = 'new'; // 'new', 'waxing-crescent', 'first-quarter', 'waxing-gibbous', 'full', 'waning-gibbous', 'third-quarter', 'waning-crescent'
+  let moonEmoji = '🌑';
 
   if (phaseFraction >= 0.03 && phaseFraction < 0.22) {
     phaseName = 'Waxing Crescent';
     phaseSvgType = 'waxing-crescent';
+    moonEmoji = '🌒';
   } else if (phaseFraction >= 0.22 && phaseFraction < 0.28) {
     phaseName = 'First Quarter';
     phaseSvgType = 'first-quarter';
+    moonEmoji = '🌓';
   } else if (phaseFraction >= 0.28 && phaseFraction < 0.47) {
     phaseName = 'Waxing Gibbous';
     phaseSvgType = 'waxing-gibbous';
+    moonEmoji = '🌔';
   } else if (phaseFraction >= 0.47 && phaseFraction < 0.53) {
     phaseName = 'Full Moon';
     phaseSvgType = 'full';
+    moonEmoji = '🌕';
   } else if (phaseFraction >= 0.53 && phaseFraction < 0.72) {
     phaseName = 'Waning Gibbous';
     phaseSvgType = 'waning-gibbous';
+    moonEmoji = '🌖';
   } else if (phaseFraction >= 0.72 && phaseFraction < 0.78) {
     phaseName = 'Third Quarter';
     phaseSvgType = 'third-quarter';
+    moonEmoji = '🌗';
   } else if (phaseFraction >= 0.78 && phaseFraction < 0.97) {
     phaseName = 'Waning Crescent';
     phaseSvgType = 'waning-crescent';
+    moonEmoji = '🌘';
   }
 
   return {
@@ -124,6 +132,7 @@ export function calculateMoonPhase(date = new Date()) {
     illumination,
     phaseName,
     phaseSvgType,
+    moonEmoji,
     lunarAgeDays: (phaseFraction * 29.53).toFixed(1)
   };
 }
